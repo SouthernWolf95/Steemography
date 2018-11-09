@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#steemBlock>* {
+			width: 200px;
+			height: 800px;
+			margin: -2px;
+			display: inline-block;
+		}
+
+		#char {
+			position: absolute;
+			color: white;
+			top: 155px;
+			left: 555px;
+			font-size: 550px;
+			font-family: "Roboto";
+		}
+	</style>
+</head>
+
+<body id="">
+		<h1>Showing Steemography for<span id="userName"> (insert username below, or choose a block viewing option)</span></h1>
+	<div id="steemBlock">
+		<span id="char"></span>
+		<div id="one"></div>
+		<div id="two"></div>
+		<div id="three"></div>
+		<div id="four"></div>
+		<div id="five"></div>
+		<div id="six"></div>
+		<div id="seven"></div>
+	</div>
+	<label for="name">Insert Steem username</label> <br />
+	<input type="text" id="name" name="name" size="25">
+	<button class="styled" type="button" onclick="createBarFlag('user')">
+		Last User Transaction
+	</button>
+	<button class="styled" type="button" onclick="createBarFlag()">
+		Newest Block ID
+	</button>
+	<button class="styled" type="button" onclick="loopUpdate()">
+			Loop Newest Block IDs
+		</button>
+	<script src="barcode-generator.js"></script>
+</body>
+
+</html>
