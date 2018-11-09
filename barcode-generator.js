@@ -23,9 +23,9 @@ function getLastUserTransactionID() {
     let userName = "southernwolf"
     if (document.getElementById("name").value != "") {
         userName = document.getElementById("name").value
-    } 
+    }
     console.log(userName)
-    let userTrx = JSON.parse(Get("https://api.steemjs.com/get_account_history?account="+userName+"&from="+blockNum+"&limit=0"))[0][1].trx_id
+    let userTrx = JSON.parse(Get("https://api.steemjs.com/get_account_history?account=" + userName + "&from=" + blockNum + "&limit=0"))[0][1].trx_id
 
     document.getElementById("userName").innerHTML = ": @" + userName
     console.log(userName + userTrx)
@@ -34,7 +34,7 @@ function getLastUserTransactionID() {
 }
 
 function createBarFlag(option) {
-    
+
     let transaction_id = getBlockID()
 
     if (option == "user") {
@@ -60,9 +60,28 @@ function createBarFlag(option) {
     //document.getElementById("id").innerHTML = transaction_id
 }
 
-function loopUpdate(option) {
-    createBarFlag(option)
-    setTimeout(loopUpdate, 3000)
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+var loopCheck = false
+
+async function loopUpdate(option) {
+    loopCheck = true
+
+    if (loopCheck == true) {
+        document.getElementById("enable").classList.add("hidden")
+        document.getElementById("disable").classList.remove("hidden")
+    }
+
+    while (loopCheck == true) {
+        createBarFlag()
+        console.log(loopCheck)
+        await sleep(3000);
+    }
+    console.log(loopCheck)
+    document.getElementById("enable").classList.remove("hidden")
+    document.getElementById("disable").classList.add("hidden")
 }
 
 

@@ -20,11 +20,15 @@
 			font-size: 550px;
 			font-family: "Roboto";
 		}
+
+		.hidden {
+			display: none;
+		}
 	</style>
 </head>
 
 <body id="">
-		<h1>Showing Steemography for<span id="userName"> (insert username below, or choose a block viewing option)</span></h1>
+	<h1>Showing Steemography for<span id="userName"> (insert username below, or choose a block viewing option)</span></h1>
 	<div id="steemBlock">
 		<span id="char"></span>
 		<div id="one"></div>
@@ -37,15 +41,18 @@
 	</div>
 	<label for="name">Insert Steem username</label> <br />
 	<input type="text" id="name" name="name" size="25">
-	<button class="styled" type="button" onclick="createBarFlag('user')">
+	<button class="styled" type="button" onclick="createBarFlag('user'); loopCheck = false">
 		Last User Transaction
 	</button>
-	<button class="styled" type="button" onclick="createBarFlag()">
+	<button class="styled" type="button" onclick="createBarFlag(); loopCheck = false">
 		Newest Block ID
 	</button>
-	<button class="styled" type="button" onclick="loopUpdate()">
-			Loop Newest Block IDs
-		</button>
+	<button class="styled" id="enable" type="button" onclick="loopUpdate()">
+		Loop Newest Block IDs
+	</button>
+	<button class="styled hidden" id="disable" type="button" onclick="loopCheck = false">
+		Stop Looping
+	</button>
 	<script src="barcode-generator.js"></script>
 </body>
 
