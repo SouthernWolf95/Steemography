@@ -22,6 +22,11 @@
 			stroke:rgb(0,0,0)
 		}
 
+		.github-link {
+			position: relative;
+			bottom: 110px;
+		}
+
 		.hidden {
 			display: none;
 		}
@@ -30,6 +35,7 @@
 
 <body id="">
 	<h1>Showing Steemography for<span id="userName"> (insert username below, or choose a block viewing option)</span></h1>
+
 	<svg width="1400" height="800">
 		<rect id="one" width="200" height="800" x="0" />
 		<rect id="two" width="200" height="800" x="200" />
@@ -55,14 +61,24 @@
 		Stop Looping
 	</button> <br> <br>
 
-	<svg>
-		<use xlink:href="Resources/powered-by-steem.svg#steempower"></use>
-	  </svg>
+	<div id="credits">
+		<svg>
+			<use xlink:href="Resources/powered-by-steem.svg#steempower"></use>
+		</svg>
+		<a class="github-link" href="https://github.com/SouthernWolf95/Steemography">
+			<span class=""> View on GitHub </span>
+			<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-mark-github" aria-hidden="true">
+				<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" /></svg>
+		</a>
+	</div>
+
 	<script src="barcode-generator.js"></script>
 	<script>
 		let temp_transaction_id = "0000000109833ce528d5bbfb3f6225b39ee10086"
-		let temp_background_color = [temp_transaction_id.slice(0, 6), temp_transaction_id.slice(6, 12), temp_transaction_id.slice(12, 18),
-		temp_transaction_id.slice(18, 24), temp_transaction_id.slice(24, 30), temp_transaction_id.slice(30, 36), temp_transaction_id.slice(36,
+		let temp_background_color = [temp_transaction_id.slice(0, 6), temp_transaction_id.slice(6, 12), temp_transaction_id.slice(
+				12, 18),
+			temp_transaction_id.slice(18, 24), temp_transaction_id.slice(24, 30), temp_transaction_id.slice(30, 36),
+			temp_transaction_id.slice(36,
 				39)
 		]
 		let temp_char_identifier = temp_transaction_id.slice(39).toUpperCase()
