@@ -20,12 +20,21 @@ function getLastUserTransactionID() {
     let jsonBlock = JSON.parse(Get("https://api.steemjs.com/get_dynamic_global_properties"))
     let blockNum = jsonBlock.head_block_number
 
-    let userName = "southernwolf"
+    let userName = "steemit"
     if (document.getElementById("name").value != "") {
         userName = document.getElementById("name").value
     }
     console.log(userName)
     let userTrx = JSON.parse(Get("https://api.steemjs.com/get_account_history?account=" + userName + "&from=" + blockNum + "&limit=0"))[0][1].trx_id
+
+    let i = 0
+    
+        while (userTrx == "0000000000000000000000000000000000000000") {
+            userTrx = JSON.parse(Get("https://api.steemjs.com/get_account_history?account=" + userName + "&from=" + blockNum + "&limit="+ i +""))[0][1].trx_id
+            console.log(userTrx + " | " +i)
+            i++
+        }
+    
 
     document.getElementById("userName").innerHTML = ": @" + userName
     console.log(userName + userTrx)
@@ -49,13 +58,13 @@ function createBarFlag(option) {
     //var transaction_id = "83c894bbe2fff4f0388e35c05859eda3e2326629" // Block Transaction Test
     let background_color = [transaction_id.slice(0, 6), transaction_id.slice(6, 12), transaction_id.slice(12, 18), transaction_id.slice(18, 24), transaction_id.slice(24, 30), transaction_id.slice(30, 36), transaction_id.slice(36, 39)]
     let char_identifier = transaction_id.slice(39).toUpperCase()
-    document.getElementById("one").style = "background-color: #" + background_color[0] + ""
-    document.getElementById("two").style = "background-color: #" + background_color[1] + ""
-    document.getElementById("three").style = "background-color: #" + background_color[2] + ""
-    document.getElementById("four").style = "background-color: #" + background_color[3] + ""
-    document.getElementById("five").style = "background-color: #" + background_color[4] + ""
-    document.getElementById("six").style = "background-color: #" + background_color[5] + ""
-    document.getElementById("seven").style = "background-color: #" + background_color[6] + ""
+    document.getElementById("one").style = "fill: #" + background_color[0] + ""
+    document.getElementById("two").style = "fill: #" + background_color[1] + ""
+    document.getElementById("three").style = "fill: #" + background_color[2] + ""
+    document.getElementById("four").style = "fill: #" + background_color[3] + ""
+    document.getElementById("five").style = "fill: #" + background_color[4] + ""
+    document.getElementById("six").style = "fill: #" + background_color[5] + ""
+    document.getElementById("seven").style = "fill: #" + background_color[6] + ""
     document.getElementById("char").innerHTML = char_identifier
     //document.getElementById("id").innerHTML = transaction_id
 }

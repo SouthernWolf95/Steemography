@@ -15,10 +15,10 @@
 		#char {
 			position: absolute;
 			color: white;
-			top: 155px;
-			left: 555px;
 			font-size: 550px;
 			font-family: "Roboto";
+			stroke-width:0;
+			stroke:rgb(0,0,0)
 		}
 
 		.hidden {
@@ -29,7 +29,7 @@
 
 <body id="">
 	<h1>Showing Steemography for<span id="userName"> (insert username below, or choose a block viewing option)</span></h1>
-	<div id="steemBlock">
+	<!-- <div id="steemBlock">
 		<span id="char"></span>
 		<div id="one"></div>
 		<div id="two"></div>
@@ -38,7 +38,17 @@
 		<div id="five"></div>
 		<div id="six"></div>
 		<div id="seven"></div>
-	</div>
+	</div> -->
+	<svg width="1400" height="800">
+		<rect id="one" width="200" height="800" x="0" style="" />
+		<rect id="two" width="200" height="800" x="200" style="" />
+		<rect id="three" width="200" height="800" x="400" style="" />
+		<rect id="four" width="200" height="800" x="600" style="" />
+		<rect id="five" width="200" height="800" x="800" style="" />
+		<rect id="six" width="200" height="800" x="1000" style="" />
+		<rect id="seven" width="200" height="800" x="1200" style="" />
+		<text id="char" x="525" y="555" fill="white"></text>
+	</svg> <br />
 	<label for="name">Insert Steem username</label> <br />
 	<input type="text" id="name" name="name" size="25">
 	<button class="styled" type="button" onclick="createBarFlag('user'); loopCheck = false">
@@ -54,6 +64,23 @@
 		Stop Looping
 	</button>
 	<script src="barcode-generator.js"></script>
+	<script>
+		let temp_transaction_id = "0000000109833ce528d5bbfb3f6225b39ee10086"
+		let temp_background_color = [temp_transaction_id.slice(0, 6), temp_transaction_id.slice(6, 12), temp_transaction_id.slice(12, 18),
+		temp_transaction_id.slice(18, 24), temp_transaction_id.slice(24, 30), temp_transaction_id.slice(30, 36), temp_transaction_id.slice(36,
+				39)
+		]
+		let temp_char_identifier = temp_transaction_id.slice(39).toUpperCase()
+		document.getElementById("one").style = "fill: #" + temp_background_color[0] + ""
+		document.getElementById("two").style = "fill: #" + temp_background_color[1] + ""
+		document.getElementById("three").style = "fill: #" + temp_background_color[2] + ""
+		document.getElementById("four").style = "fill: #" + temp_background_color[3] + ""
+		document.getElementById("five").style = "fill: #" + temp_background_color[4] + ""
+		document.getElementById("six").style = "fill: #" + temp_background_color[5] + ""
+		document.getElementById("seven").style = "fill: #" + temp_background_color[6] + ""
+		document.getElementById("char").innerHTML = temp_char_identifier
+		document.getElementById("userName").innerHTML = " Block: 1"
+	</script>
 </body>
 
 </html>
