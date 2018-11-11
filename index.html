@@ -13,15 +13,6 @@
 			display: inline-block;
 		}
 
-		#char {
-			position: absolute;
-			color: white;
-			font-size: 550px;
-			font-family: "Roboto", sans-serif;
-			stroke-width:0;
-			stroke:rgb(0,0,0)
-		}
-
 		.github-link {
 			position: relative;
 			bottom: 110px;
@@ -36,16 +27,19 @@
 <body id="">
 	<h1>Showing Steemography for<span id="userName"> (insert username below, or choose a block viewing option)</span></h1>
 
-	<svg width="1400" height="800">
-		<rect id="one" width="200" height="800" x="0" />
-		<rect id="two" width="200" height="800" x="200" />
-		<rect id="three" width="200" height="800" x="400" />
-		<rect id="four" width="200" height="800" x="600" />
-		<rect id="five" width="200" height="800" x="800" />
-		<rect id="six" width="200" height="800" x="1000" />
-		<rect id="seven" width="200" height="800" x="1200" />
-		<text id="char" x="525" y="555" fill="white"></text>
-	</svg> <br />
+	<div id="mainsvg">
+		<svg xmlns='http://www.w3.org/2000/svg' class="hidden" width="1400" height="800">
+			<rect id="one" width="200" height="800" x="0" />
+			<rect id="two" width="200" height="800" x="200" />
+			<rect id="three" width="200" height="800" x="400" />
+			<rect id="four" width="200" height="800" x="600" />
+			<rect id="five" width="200" height="800" x="800" />
+			<rect id="six" width="200" height="800" x="1000" />
+			<rect id="seven" width="200" height="800" x="1200" />
+			<text id="char" x="525" y="555" fill="white" style="position: absolute; color: white; font-size: 550px; font-family: 'Roboto', sans-serif;"></text>
+		</svg>
+	</div>
+	<canvas id="canvas" width="1400" height="800"></canvas> <br />
 	<label for="name">Insert Steem username</label> <br />
 	<input type="text" id="name" name="name" size="25">
 	<button class="styled" type="button" onclick="createBarFlag('user'); loopCheck = false">
@@ -91,6 +85,8 @@
 		document.getElementById("seven").style = "fill: #" + temp_background_color[6] + ""
 		document.getElementById("char").innerHTML = temp_char_identifier
 		document.getElementById("userName").innerHTML = " Block: 1"
+
+		createPNG()
 	</script>
 </body>
 
