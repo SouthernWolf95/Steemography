@@ -74,7 +74,7 @@ async function loopUpdate(option) {
     if (loopCheck == true) {
         document.getElementById("enable").classList.add("hidden")
         document.getElementById("disable").classList.remove("hidden")
-        document.getElementById("myBar").classList.remove("hidden")
+        document.getElementById("myProgress").classList.remove("hidden")
     }
 
     while (loopCheck == true) {
@@ -84,7 +84,7 @@ async function loopUpdate(option) {
     }
     document.getElementById("enable").classList.remove("hidden")
     document.getElementById("disable").classList.add("hidden")
-    document.getElementById("myBar").classList.add("hidden")
+    document.getElementById("myProgress").classList.add("hidden")
 }
 
 function createPNG() {
