@@ -35,7 +35,7 @@ function getLastUserTransactionID() {
     }
 
 
-    document.getElementById("userName").innerHTML = ": @" + userName
+    document.getElementById("userName").innerHTML = "@" + userName
 
     return userTrx
 }
@@ -78,6 +78,7 @@ async function loopUpdate(option) {
 
     while (loopCheck == true) {
         createBarFlag()
+        move()
         await sleep(3000);
     }
     document.getElementById("enable").classList.remove("hidden")
@@ -100,4 +101,18 @@ function createPNG() {
         DOMURL.revokeObjectURL(url);
     };
     img.src = url;
+}
+
+function move() {
+    var elem = document.getElementById("myBar"); 
+    var width = 1;
+    var id = setInterval(frame, 30);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
 }
