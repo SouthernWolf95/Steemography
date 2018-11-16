@@ -1,3 +1,13 @@
+var bar = new ProgressBar.Circle(container, {
+    strokeWidth: 20,
+    easing: 'linear',
+    duration: 3000,
+    color: '#5f00de',
+    trailColor: '#fff',
+    trailWidth: 1,
+    svgStyle: null
+  });
+
 function Get(yourUrl) {
     let Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET", yourUrl, false);
@@ -74,17 +84,16 @@ async function loopUpdate(option) {
     if (loopCheck == true) {
         document.getElementById("enable").classList.add("hidden")
         document.getElementById("disable").classList.remove("hidden")
-        document.getElementById("myBar").classList.remove("hidden")
     }
 
     while (loopCheck == true) {
         createBarFlag()
-        move()
+        bar.animate(1.0)
         await sleep(3000);
+        bar.set(0)
     }
     document.getElementById("enable").classList.remove("hidden")
     document.getElementById("disable").classList.add("hidden")
-    document.getElementById("myBar").classList.add("hidden")
 }
 
 function createPNG() {
