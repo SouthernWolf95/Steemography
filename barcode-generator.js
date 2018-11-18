@@ -90,7 +90,7 @@ async function loopUpdate(option) {
         createBarFlag()
         bar.animate(1.0)
         await sleep(3000);
-        bar.set(0)
+        bar.set(0.0)
     }
     document.getElementById("enable").classList.remove("hidden")
     document.getElementById("disable").classList.add("hidden")
@@ -112,18 +112,4 @@ function createPNG() {
         DOMURL.revokeObjectURL(url);
     };
     img.src = url;
-}
-
-function move() {
-    var elem = document.getElementById("myBar"); 
-    var width = 1;
-    var id = setInterval(frame, 30);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
 }
